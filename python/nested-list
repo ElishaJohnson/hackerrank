@@ -1,0 +1,25 @@
+students = []
+penultimateNames = []
+lowestScore = penultimateScore = 100
+
+for _ in range(int(raw_input())):
+    name = raw_input()
+    score = float(raw_input())
+    students.append([name, score])
+
+# establish penultimate score
+for i in range(len(students)):
+    if students[i][1] < lowestScore:
+        penultimateScore = lowestScore
+        lowestScore = students[i][1]
+    elif students[i][1] < penultimateScore and students[i][1] > lowestScore:
+        penultimateScore = students[i][1]
+
+# create list of students with penultimate score
+for i in range(len(students)):
+    if students[i][1] == penultimateScore:
+        penultimateNames.append(students[i][0])
+        
+penultimateNames.sort()
+
+print("\n".join(penultimateNames))
